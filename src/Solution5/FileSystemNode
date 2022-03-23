@@ -1,0 +1,16 @@
+package Solution5;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+
+
+interface FileSystemNode{
+    String getParenElement();
+
+    String getNameElement();
+
+    String getPath();
+}
+
+
