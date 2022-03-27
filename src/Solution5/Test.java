@@ -26,9 +26,11 @@ public class Test {
 
         System.out.println(fs4.getPath());
 
-        Folder someFile = new File(fs4,"kek.txt");
+        File someFile = new File(fs4,"kek.txt");
 
         System.out.println(someFile.getPath());
+
+        System.out.println(someFile.getFileExtension());
     }
 }
 
