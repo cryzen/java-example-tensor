@@ -57,7 +57,7 @@ public class Card{
             return "The card does not belong to the deck";
         }
     }
-
+ 
     public String checkRank(Card card) {
         if (card.suit.equals(suit) && rank.compareTo(card.rank) > 0) {
             return "The rank of this card is higher";
