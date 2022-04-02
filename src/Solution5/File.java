@@ -1,25 +1,26 @@
 package Solution5;
 
-class File extends Folder {
-    private String fileName;
+class File extends AbstractFileSystemNode {
+    private final String fileName;
+    private final String folderName;
 
     public String getFileName() {
         return fileName;
     }
 
     public File(Folder folder, String fileName) {
-        super(folder.getFolderName());
+        folderName =  folder.getFolderName();
         this.fileName = fileName;
     }
 
     @Override
     public String getNameElement() {
-       return getFolderName() + "/" + getFileName();
+       return folderName + "/" + getFileName();
     }
 
     @Override
     public String toString(){
-        return "File: " + getFileName() + " is in " + getFolderName();
+        return "File: " + getFileName() + " is in " + folderName;
     }
 
     public String getFileExtension() {
