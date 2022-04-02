@@ -98,7 +98,7 @@ public class Card{
         return Integer.compare(currentSuitIndex, cardSuitIndex);
     }
 
-    public static int compareCards(Card firstCard, Card secondCard){
+    public static int compareCards(Card firstCard, Card secondCard) {
         int firstCardSuitIndex = suitName.indexOf(firstCard.suit);
         int secondCardSuitIndex = suitName.indexOf(secondCard.suit);
 
