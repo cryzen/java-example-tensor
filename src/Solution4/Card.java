@@ -1,18 +1,40 @@
 package Solution4;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Card implements Comparable<Card> {
     private String rank;
     private String suit;
 
-    static String[] rankName = {"deuce", "three", "four", "five", "six", "seven", "eight",
-            "nine", "ten", "jack", "queen", "king", "ace"};
-    static String[] suitName = {"clubs", "diamonds", "spades", "hearts"};
+    static final List<String> rankName = new ArrayList<>();
+    static final List<String> suitName = new ArrayList<>();
+
+    static {
+        rankName.add("deus");
+        rankName.add("three");
+        rankName.add("four");
+        rankName.add("five");
+        rankName.add("six");
+        rankName.add("seven");
+        rankName.add("eight");
+        rankName.add("nine");
+        rankName.add("ten");
+        rankName.add("jack");
+        rankName.add("queen");
+        rankName.add("king");
+        rankName.add("ace");
+
+        suitName.add("clubs");
+        suitName.add("diamonds");
+        suitName.add("spades");
+        suitName.add("hearts");
+    }
 
     public Card(){
-        suit = suitName[2];
-        rank = rankName[2];
+        suit = "spades";
+        rank = "four";
     }
 
     public Card(String suit, String rank){
@@ -29,12 +51,12 @@ public class Card implements Comparable<Card> {
     public void setSuit(String newSuit) { suit = newSuit; }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return Objects.hash(suit, rank);
     }
 
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (obj == this){
             return  true;
         }
@@ -46,39 +68,39 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return getRank() + " of " + getSuit();
     }
 
-    public String checkDeckMembership(Card card) {
-        if (card.suit.equals(suit)) {
-            return "The card belongs to the deck";
-        } else {
-            return "The card does not belong to the deck";
-        }
+    public boolean checkDeckMembership() {
+        return suitName.contains(getSuit()) && rankName.contains(getRank());
     }
 
     public String checkRank(Card card) {
-        if (card.suit.equals(suit) && rank.compareTo(card.rank) > 0) {
+        int currentRankIndex = rankName.indexOf(rank);
+        int cardRankIndex = rankName.indexOf(card.rank);
+
+        if (card.suit.equals(suit) && currentRankIndex > cardRankIndex) {
             return "The rank of this card is higher";
-        } else if (card.suit.equals(suit) && rank.compareTo(card.rank) < 0) {
+        } else if (card.suit.equals(suit) && currentRankIndex < cardRankIndex) {
             return "The rank of this card is lower";
-        } else if (card.suit.equals(suit)){
+        } else if (card.suit.equals(suit)) {
             return "Card ranks are the same";
         } else {
-            return "Cards do not match";
+            return "Different card suits";
         }
     }
 
     public int compareTo(Card card) {
-        int suitCompare = suit.compareTo(card.suit);
+        int suitCompare = Integer.compare(suitName.indexOf(suit), suitName.indexOf(card.suit));
 
-        return (suitCompare != 0 ? suitCompare : rank.compareTo(card.rank));
+        return (suitCompare != 0 ? suitCompare: Integer.compare(rankName.indexOf(rank), rankName.indexOf(card.rank)));
     }
 
-    public static int compareCards(Card firstCard, Card secondCard){
-        int cardPairCompare = firstCard.getSuit().compareTo(secondCard.getSuit());
+    public static int compareCards(Card firstCard, Card secondCard) {
+        int firstCardSuitIndex = suitName.indexOf(firstCard.suit);
+        int secondCardSuitIndex = suitName.indexOf(secondCard.suit);
 
-        return Integer.compare(cardPairCompare, 0);
+        return Integer.compare(firstCardSuitIndex, secondCardSuitIndex);
     }
 }
