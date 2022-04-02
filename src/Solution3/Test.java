@@ -10,7 +10,7 @@ public class Test {
         System.out.println(card1.hashCode());
 
         Card card2 = new Card("spades", "three");
-        Card card4 = new Card("spades", "three");
+        Card card4 = new Card("clubs", "three");
 
         System.out.println(card2);
         System.out.println(card2.hashCode());
