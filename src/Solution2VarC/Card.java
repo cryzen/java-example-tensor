@@ -1,26 +1,34 @@
 package Solution2VarC;
 
 public class Card {
+    private static int maxRank;
+
     private int rank;
     private String suit;
-    private static int maxRank;
+    private final int suitMaxRank;
 
     public Card(){
         suit = "diamonds";
         rank = 4;
+        maxRank = rank;
+        suitMaxRank = maxRank;
     }
 
     public Card(String suit, int rank){
+        if (rank > maxRank) {
+            maxRank = rank;
+        }
+
         this.suit = suit;
         this.rank = rank;
-        maxRank = rank;
+        suitMaxRank = maxRank;
     }
 
-    public Card(String suit){
+    public Card(String suit) {
         this(suit, ++maxRank);
     }
 
-    void displayCard(){
+    void displayCard() {
         System.out.println(rank + " of " + suit);
     }
 

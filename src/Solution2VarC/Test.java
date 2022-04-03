@@ -2,7 +2,7 @@ package Solution2VarC;
 
 public class Test {
     public static void main(String[] args){
-        Card card = new Card("diamonds", 2);
+        Card card = new Card("diamonds", 6);
         Card card1 = new Card("diamonds", 4);
 
         card.displayCard();
