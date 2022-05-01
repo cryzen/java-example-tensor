@@ -3,54 +3,59 @@ package Solution4;
 import java.util.*;
 
 public class Deck {
-    private static final List<Card> prototypeDeck = new ArrayList<Card>(52);
-    private static Card removingCard;
+    private final List<Card> prototypeDeck = new ArrayList<>(52);
+    private Card removingCard;
 
-    static {
-        for (String suit: Card.suitName){
-            for (String rank: Card.rankName){
+    public Deck() {}
+
+    public List<Card> newDeckWithoutJoker() {
+        for (String suit: Card.suitNames){
+            for (String rank: Card.rankNames){
                 prototypeDeck.add(new Card(suit, rank));
             }
         }
-    }
 
-    private Deck() {}
-
-    public static List<Card> newDeckWithoutJoker() {
-        return new ArrayList<Card>(prototypeDeck);
-    }
-
-    public static List<Card> newDeckWithJoker(){
-        prototypeDeck.add(new Card("diamonds", "joker"));
-        prototypeDeck.add(new Card("clubs", "joker"));
         return prototypeDeck;
     }
 
-    public static Card randomCard() {
+    public List<Card> newDeckWithJoker(){
+        for (String suit: Card.suitNames){
+            for (String rank: Card.rankNames){
+                prototypeDeck.add(new Card(suit, rank));
+            }
+        }
+
+        prototypeDeck.add(new Card("diamonds", "joker"));
+        prototypeDeck.add(new Card("clubs", "joker"));
+
+        return prototypeDeck;
+    }
+
+    public Card randomCard() {
         Random rand = new Random();
         return prototypeDeck.get(rand.nextInt(prototypeDeck.size()));
     }
 
-    public static void displayDeck() {
+    public void displayDeck() {
         System.out.println(prototypeDeck);
     }
 
-    public static void shuffleDeck() {
+    public void shuffleDeck() {
         Collections.shuffle(prototypeDeck);
     }
 
-    public static void sortDeck() {
+    public void sortDeck() {
         Collections.sort(prototypeDeck);
     }
 
-    public static Card getCard(int cardIndex) {
+    public Card getCard(int cardIndex) {
         Card nameCard = prototypeDeck.get(cardIndex);
         removingCard = nameCard;
         prototypeDeck.remove(cardIndex);
         return nameCard;
     }
 
-    public static void setCard(int cardIndex){
+    public void setCard(int cardIndex){
         if (prototypeDeck.contains(removingCard)) {
             System.out.println("This card is already in the deck");
         } else {
@@ -58,7 +63,7 @@ public class Deck {
         }
     }
 
-    public static boolean checkDeck() {
+    public boolean checkDeck() {
         return prototypeDeck.isEmpty();
     }
 }

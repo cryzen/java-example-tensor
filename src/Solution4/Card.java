@@ -8,28 +8,28 @@ public class Card implements Comparable<Card> {
     private String rank;
     private String suit;
 
-    static final List<String> rankName = new ArrayList<>();
-    static final List<String> suitName = new ArrayList<>();
+    static final List<String> rankNames = new ArrayList<>();
+    static final List<String> suitNames = new ArrayList<>();
 
     static {
-        rankName.add("deus");
-        rankName.add("three");
-        rankName.add("four");
-        rankName.add("five");
-        rankName.add("six");
-        rankName.add("seven");
-        rankName.add("eight");
-        rankName.add("nine");
-        rankName.add("ten");
-        rankName.add("jack");
-        rankName.add("queen");
-        rankName.add("king");
-        rankName.add("ace");
+        rankNames.add("deus");
+        rankNames.add("three");
+        rankNames.add("four");
+        rankNames.add("five");
+        rankNames.add("six");
+        rankNames.add("seven");
+        rankNames.add("eight");
+        rankNames.add("nine");
+        rankNames.add("ten");
+        rankNames.add("jack");
+        rankNames.add("queen");
+        rankNames.add("king");
+        rankNames.add("ace");
 
-        suitName.add("clubs");
-        suitName.add("diamonds");
-        suitName.add("spades");
-        suitName.add("hearts");
+        suitNames.add("clubs");
+        suitNames.add("diamonds");
+        suitNames.add("spades");
+        suitNames.add("hearts");
     }
 
     public Card(){
@@ -73,12 +73,12 @@ public class Card implements Comparable<Card> {
     }
 
     public boolean checkDeckMembership() {
-        return suitName.contains(getSuit()) && rankName.contains(getRank());
+        return suitNames.contains(getSuit()) && rankNames.contains(getRank());
     }
 
     public String checkRank(Card card) {
-        int currentRankIndex = rankName.indexOf(rank);
-        int cardRankIndex = rankName.indexOf(card.rank);
+        int currentRankIndex = rankNames.indexOf(rank);
+        int cardRankIndex = rankNames.indexOf(card.rank);
 
         if (card.suit.equals(suit) && currentRankIndex > cardRankIndex) {
             return "The rank of this card is higher";
@@ -91,15 +91,16 @@ public class Card implements Comparable<Card> {
         }
     }
 
+    @Override
     public int compareTo(Card card) {
-        int suitCompare = Integer.compare(suitName.indexOf(suit), suitName.indexOf(card.suit));
+        int suitCompare = Integer.compare(suitNames.indexOf(suit), suitNames.indexOf(card.suit));
 
-        return (suitCompare != 0 ? suitCompare: Integer.compare(rankName.indexOf(rank), rankName.indexOf(card.rank)));
+        return (suitCompare != 0 ? suitCompare: Integer.compare(rankNames.indexOf(rank), rankNames.indexOf(card.rank)));
     }
 
     public static int compareCards(Card firstCard, Card secondCard) {
-        int firstCardSuitIndex = suitName.indexOf(firstCard.suit);
-        int secondCardSuitIndex = suitName.indexOf(secondCard.suit);
+        int firstCardSuitIndex = suitNames.indexOf(firstCard.suit);
+        int secondCardSuitIndex = suitNames.indexOf(secondCard.suit);
 
         return Integer.compare(firstCardSuitIndex, secondCardSuitIndex);
     }
