@@ -29,7 +29,7 @@ public class Card {
         System.out.println(rank + " of " + suit);
     }
 
-    public static int getMaxRank() { return maxRank; }
+    public int getMaxRank() { return maxRank; }
 
     public int getRank() { return rank; }
 
