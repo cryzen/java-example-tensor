@@ -5,13 +5,11 @@ public class Card {
 
     private int rank;
     private String suit;
-    private final int suitMaxRank;
 
     public Card(){
         suit = "diamonds";
         rank = 4;
         maxRank = rank;
-        suitMaxRank = maxRank;
     }
 
     public Card(String suit, int rank){
@@ -21,7 +19,6 @@ public class Card {
 
         this.suit = suit;
         this.rank = rank;
-        suitMaxRank = maxRank;
     }
 
     public Card(String suit) {

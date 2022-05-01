@@ -2,8 +2,8 @@ package Solution2VarC;
 
 public class Test {
     public static void main(String[] args){
-        Card card = new Card("diamonds", 6);
-        Card card1 = new Card("diamonds", 4);
+        Card card = new Card("diamonds", 4);
+        Card card1 = new Card("diamonds", 2);
 
         card.displayCard();
         card1.displayCard();
@@ -13,6 +13,5 @@ public class Test {
         Card card2 = new Card("diamonds");
 
         card2.displayCard();
-
     }
 }
